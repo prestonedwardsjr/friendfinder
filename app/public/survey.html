@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Survey Questions</h1>
+      <h3>Answer a few basic questions.<br>Then find the friend with the greatest compatibility!</h3>
+      <hr>
+    </div>
+    <div class="card-body">
+    <form method="POST" role="form">
+
+      <div class="form-group">
+        <label for="name">About You<br>
+          Name(Required)</label>
+        <input type="text" class="form-control" id="name">
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Link to Photo Image (Required)</label>
+        <input type="text" class="form-control" id="photo">
+      </div>
+
+      <div class="form-group">
+        <label for="question1">Question 1<br>Your mind is always buzzing with unexplored ideas and plans.</label>
+        <input type="text" class="form-control" id="question1">
+      </div>
+
+      <div class="form-group">
+        <label for="question2">Question 2<br>Generally speaking, you rely more on your experience than your imagination.</label>
+        <input type="text" class="form-control" id="question2">
+      </div>
+
+    </form>
+    <br>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add to the Force</button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+// Question: What does this code do?
+$("#add-btn").on("click", function(event) {
+event.preventDefault();
+var newCharacter = {
+name: $("#name").val().trim(),
+photo: $("#photo").val().trim(),
+question1: $("#question1").val().trim(),
+question2: $("#question2").val().trim()
+};
+
+// Question: What does this code do??
+$.post("/api/characters", newCharacter)
+.then(function(data) {
+  console.log("add.html", data);
+  alert("Adding character...");
+});
+});
+</script>
+</body>
+
+</html>
